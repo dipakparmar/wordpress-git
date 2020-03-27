@@ -7,8 +7,9 @@ RUN apk --no-cache add php7 php7-fpm php7-mysqli php7-json php7-openssl php7-cal
     php7-bcmath php7-fileinfo php7-gd php7-json php7-mcrypt php7-opcache php7-soap \
     php7-tokenizer php7-zip nginx supervisor curl bash less rsync nano git
     
-RUN git clone https://github.com/TrafeX/docker-wordpress.git \
-    cd docker-wordpress
+RUN git clone https://github.com/TrafeX/docker-wordpress.git
+
+RUN cd docker-wordpress
 
 # Configure nginx
 COPY config/nginx3.conf /etc/nginx/nginx.conf
