@@ -1,8 +1,8 @@
 FROM alpine:3.11
 
 RUN apk add git \
-    git clone https://github.com/TrafeX/docker-wordpress.git
-    cd docker-wordpress/
+    git clone https://github.com/TrafeX/docker-wordpress.git \
+    cd docker-wordpress
 
 # Install packages from testing repo's
 RUN apk --no-cache add php7 php7-fpm php7-mysqli php7-json php7-openssl php7-calendar \
