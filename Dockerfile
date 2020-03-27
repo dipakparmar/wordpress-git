@@ -1,22 +1,22 @@
-FROM alpine:latest
+FROM alpine:3.11
 
 # Install packages from testing repo's
 RUN apk --no-cache add php7 php7-fpm php7-mysqli php7-json php7-openssl php7-calendar \
     php7-curl php7-zlib php7-xml php7-phar php7-intl php7-dom php7-xmlreader \
     php7-xmlwriter php7-simplexml php7-ctype php7-mbstring php7-gd php7-session \
     php7-bcmath php7-fileinfo php7-gd php7-json php7-mcrypt php7-opcache php7-soap \
-    php7-tokenizer php7-zip nginx supervisor curl bash less rsync nano git
+    php7-tokenizer php7-zip nginx supervisor curl bash less rsync nano
 
 # Configure nginx
-#COPY config/nginx3.conf /etc/nginx/nginx.conf
+COPY config/nginx3.conf /etc/nginx/nginx.conf
 #COPY config/php-fpm.conf /etc/nginx/php-fpm.conf
 
 # Configure PHP-FPM
-#COPY config/fpm-pool.conf /etc/php7/php-fpm.d/zzz_custom.conf
-#COPY config/php.ini /etc/php7/conf.d/zzz_custom.ini
+COPY config/fpm-pool.conf /etc/php7/php-fpm.d/zzz_custom.conf
+COPY config/php.ini /etc/php7/conf.d/zzz_custom.ini
 
 # Configure supervisord
-#COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # WordPress
 ENV WORDPRESS_VERSION 5.3.2
@@ -40,17 +40,17 @@ RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh
     && chmod +x /usr/local/bin/wp
 
 # WP config
-#COPY wp-config.php /var/www/html
+COPY wp-config.php /var/www/html
 RUN chown nobody:nobody /var/www/html/wp-config.php && chmod 640 /var/www/html/wp-config.php
 
 # Append WP secrets
-#COPY wp-secrets.php /var/www/html
+COPY wp-secrets.php /var/www/html
 RUN chown nobody:nobody /var/www/html/wp-secrets.php && chmod 640 /var/www/html/wp-secrets.php
 
-#COPY config/default.conf /etc/nginx/conf.d/default.conf
-#COPY config/wordpress.conf /etc/nginx/global/wordpress.conf
-#COPY config/restrictions.conf /etc/nginx/global/restrictions.conf
-#COPY config/proxy.conf /etc/nginx/global/proxy.conf
+COPY config/default.conf /etc/nginx/conf.d/default.conf
+COPY config/wordpress.conf /etc/nginx/global/wordpress.conf
+COPY config/restrictions.conf /etc/nginx/global/restrictions.conf
+COPY config/proxy.conf /etc/nginx/global/proxy.conf
 
 # Entrypoint to copy wp-content
 COPY entrypoint.sh /entrypoint.sh
