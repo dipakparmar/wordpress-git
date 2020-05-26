@@ -22,7 +22,7 @@ _WordPress version currently installed:_ **5.4.1**
 
 
 ## Usage
-See [docker-compose.yml](/blob/master/docker-compose.yml) how to use it in your own environment.
+See [docker-compose.yml](https://github.com/dipakparmar/wordpress-git/blob/master/docker-compose.yml) how to use it in your own environment.
 
     docker-compose up
 
