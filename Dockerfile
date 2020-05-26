@@ -1,15 +1,13 @@
 FROM alpine:3.11
+LABEL Maintainer="Dipak Parmar <hi@dipak.tech>" \
+      Description="Lightweight WordPress container with Nginx 1.14 & PHP-FPM 7.2 based on Alpine Linux."
 
 # Install packages from testing repo's
 RUN apk --no-cache add php7 php7-fpm php7-mysqli php7-json php7-openssl php7-calendar \
     php7-curl php7-zlib php7-xml php7-phar php7-intl php7-dom php7-xmlreader \
     php7-xmlwriter php7-simplexml php7-ctype php7-mbstring php7-gd php7-session \
-    php7-bcmath php7-fileinfo php7-gd php7-json php7-mcrypt php7-opcache php7-soap \
-    php7-tokenizer php7-zip nginx supervisor curl bash less rsync nano git
-    
-RUN git clone https://github.com/TrafeX/docker-wordpress.git
-
-RUN cd docker-wordpress
+    php7-bcmath php7-ftp php7-fileinfo php7-gd php7-json php7-iconv php7-mcrypt php7-opcache \
+    php7-soap php7-tokenizer php7-zip nginx supervisor curl bash less rsync nano git
 
 # Configure nginx
 COPY config/nginx3.conf /etc/nginx/nginx.conf
@@ -23,8 +21,8 @@ COPY config/php.ini /etc/php7/conf.d/zzz_custom.ini
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # WordPress
-ENV WORDPRESS_VERSION 5.3.2
-ENV WORDPRESS_SHA1 fded476f112dbab14e3b5acddd2bcfa550e7b01b
+ENV WORDPRESS_VERSION 5.4.1
+ENV WORDPRESS_SHA1 9800c231828eb5cd76ba0b8aa6c1a74dfca2daff
 
 # wp-content volume
 VOLUME /var/www/html/wp-content
@@ -36,7 +34,7 @@ RUN curl -o wordpress.tar.gz -SL https://wordpress.org/wordpress-${WORDPRESS_VER
 	&& tar -xzf wordpress.tar.gz -C /var/www/ \
 	&& rm wordpress.tar.gz \
 	&& rsync -a /var/www/wordpress/* /var/www/html/ \
-#	&& rm -rf /var/www/wordpress \
+	&& rm -rf /var/www/html/wp-content/* \
 	&& chown -R nobody:nobody /var/www/html
 
 # Add WP CLI
