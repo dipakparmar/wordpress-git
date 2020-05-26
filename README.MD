@@ -14,15 +14,15 @@ _WordPress version currently installed:_ **5.4.1**
 * Can safely be updated without losing data
 * Fully configurable because wp-config.php uses the environment variables you can pass as a argument to the container
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/trafex/wordpress.svg)](https://hub.docker.com/r/trafex/wordpress/)
-[![Docker image layers](https://images.microbadger.com/badges/image/trafex/wordpress.svg)](https://microbadger.com/images/trafex/wordpress)
+[![Docker Pulls](https://img.shields.io/docker/pulls/dipakparmar/wordpress-git.svg)](https://hub.docker.com/r/dipakparmar/wordpress-git)
+[![Docker image layers](https://images.microbadger.com/badges/image/dipakparmar/wordpress-git.svg)](https://microbadger.com/images/dipakparmar/wordpress-git)
 ![nginx 1.14.1](https://img.shields.io/badge/nginx-1.14-brightgreen.svg)
 ![php 7.2](https://img.shields.io/badge/php-7.2-brightgreen.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 
 ## Usage
-See [docker-compose.yml](https://github.com/TrafeX/docker-wordpress/blob/master/docker-compose.yml) how to use it in your own environment.
+See [docker-compose.yml](/blob/master/docker-compose.yml) how to use it in your own environment.
 
     docker-compose up
 
