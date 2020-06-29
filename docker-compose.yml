@@ -16,7 +16,7 @@ services:
       - db
     build: ./
     volumes:
-      - "site-data:/var/www/wp-content"
+      - "site-data:/var/www/html/wp-content"
     ports:
       - "80:80"
     environment:
