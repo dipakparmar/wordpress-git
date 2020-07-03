@@ -16,8 +16,8 @@ WordPress version currently installed: _**5.4.2**_
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/dipakparmar/wordpress-git.svg)](https://hub.docker.com/r/dipakparmar/wordpress-git)
 [![Docker image layers](https://images.microbadger.com/badges/image/dipakparmar/wordpress-git.svg)](https://microbadger.com/images/dipakparmar/wordpress-git)
-![nginx 1.14.1](https://img.shields.io/badge/nginx-1.14-brightgreen.svg)
-![php 7.2](https://img.shields.io/badge/php-7.2-brightgreen.svg)
+![nginx 1.16.1](https://img.shields.io/badge/nginx-1.16-brightgreen.svg)
+![php 7.3](https://img.shields.io/badge/php-7.3-brightgreen.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 
