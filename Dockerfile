@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.12
 LABEL Maintainer="Dipak Parmar <hi@dipak.tech>" \
       Description="Lightweight WordPress container with Nginx 1.14 & PHP-FPM 7.2 based on Alpine Linux."
 
