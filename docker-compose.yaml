@@ -1,0 +1,40 @@
+version: "3.6"
+services:
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    # build: ./
+    env_file: '.env'
+    volumes:
+      - "site-data:/var/www/html/wp-content"
+    ports:
+      - "80:80"
+    environment:
+      DB_HOST: '$DB_HOST'
+      DB_PASSWORD: '$DB_PASSWORD'
+      DB_NAME: '$DB_NAME'
+      DB_USER: '$DB_USER'
+      WORDPRESS_SITE_URL: '$WORDPRESS_SITE_URL'
+      FS_METHOD: direct
+      # For debugging only:
+      #WP_DEBUG: "true"
+      #WP_DEBUG_DISPLAY: "true"
+
+  db:
+    image: mariadb:10.3
+    env_file: '.env'
+    volumes:
+      - "db-data:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: '$MYSQL_ROOT_PASSWORD'
+      MYSQL_DATABASE: '$MYSQL_DATABASE'
+      MYSQL_USER: '$MYSQL_USER'
+      MYSQL_PASSWORD: '$MYSQL_PASSWORD'
+
+volumes:
+  db-data:
+  site-data:
+
