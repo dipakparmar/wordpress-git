@@ -24,8 +24,8 @@ if [ "$DISABLE_AUTO_CHOWN" != "true" ]; then
     chown -R nobody:nobody /var/www/html/wp-content
 fi
 
-if [ "$DISABLE_AUTO_DB_UPDATE" != "true" ]; then
-    wp core update-db
-fi
+# if [ "$DISABLE_AUTO_DB_UPDATE" != "true" ]; then
+#     wp core update-db
+# fi
 
 exec "$@"
