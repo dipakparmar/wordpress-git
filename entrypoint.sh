@@ -22,6 +22,7 @@ fi
 
 if [ "$LIVE" != "true" ]; then
     chown -R nobody:nobody /var/www/html/wp-content
+     wp core update-db
 fi
 
 exec "$@"
