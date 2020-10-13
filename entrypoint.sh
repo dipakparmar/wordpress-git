@@ -20,9 +20,12 @@ if [ ! "$(ls -A "/var/www/html/wp-content" 2>/dev/null)" ]; then
     rsync -a /var/www/wp-content/ /var/www/html/wp-content/
 fi
 
-if [ "$LIVE" != "true" ]; then
+if [ "$DISABLE_AUTO_CHOWN" != "true" ]; then
     chown -R nobody:nobody /var/www/html/wp-content
-     wp core update-db
+fi
+
+if [ "$DISABLE_AUTO_DB_UPDATE" != "true" ]; then
+    wp core update-db
 fi
 
 exec "$@"
