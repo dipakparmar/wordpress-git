@@ -22,7 +22,7 @@ COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # WordPress
 ENV WORDPRESS_VERSION 5.6.1
-ENV WORDPRESS_SHA1 ee856c2a5ba1fb8ef0676a986340b331
+ENV WORDPRESS_SHA1 e9377242a433acbb2df963966f98c31d
 
 # wp-content volume
 VOLUME /var/www/html/wp-content
