@@ -21,8 +21,8 @@ COPY config/php.ini /etc/php7/conf.d/zzz_custom.ini
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # WordPress
-ENV WORDPRESS_VERSION 5.5.3
-ENV WORDPRESS_SHA1 9d3319790c73c4b22077e7ecd604ce66
+ENV WORDPRESS_VERSION 5.6
+ENV WORDPRESS_SHA1 4d25d68ff9ceb9b5196b05ec6881cf2a
 
 # wp-content volume
 VOLUME /var/www/html/wp-content
