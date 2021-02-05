@@ -1,6 +1,6 @@
 FROM alpine:3.12
 LABEL Maintainer="Dipak Parmar <hi@dipak.tech>" \
-      Description="Lightweight WordPress container with Nginx 1.14 & PHP-FPM 7.2 based on Alpine Linux."
+    Description="Lightweight WordPress container with Nginx 1.14 & PHP-FPM 7.2 based on Alpine Linux."
 
 # Install packages from testing repo's
 RUN apk --no-cache add php7 php7-fpm php7-mysqli php7-json php7-openssl php7-calendar \
@@ -22,7 +22,7 @@ COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # WordPress
 ENV WORDPRESS_VERSION 5.6.1
-ENV WORDPRESS_SHA1 e9377242a433acbb2df963966f98c31d
+ENV WORDPRESS_SHA1 19ec00acb177da27533edf5500f911f9d97c047a
 
 # wp-content volume
 VOLUME /var/www/html/wp-content
@@ -30,12 +30,12 @@ WORKDIR /var/www/html/wp-content
 
 # Upstream tarballs include ./wordpress/ so this gives us /usr/src/wordpress
 RUN curl -o wordpress.tar.gz -SL https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz \
-	&& echo "$WORDPRESS_SHA1 *wordpress.tar.gz" | sha1sum -c - \
-	&& tar -xzf wordpress.tar.gz -C /var/www/ \
-	&& rm wordpress.tar.gz \
-	&& rsync -a /var/www/wordpress/* /var/www/html/ \
-	&& rm -rf /var/www/html/wp-content/* \
-	&& chown -R nobody:nobody /var/www/html
+    && echo "$WORDPRESS_SHA1 *wordpress.tar.gz" | sha1sum -c - \
+    && tar -xzf wordpress.tar.gz -C /var/www/ \
+    && rm wordpress.tar.gz \
+    && rsync -a /var/www/wordpress/* /var/www/html/ \
+    && rm -rf /var/www/html/wp-content/* \
+    && chown -R nobody:nobody /var/www/html
 
 # Add WP CLI
 RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
